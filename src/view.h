@@ -3,11 +3,16 @@
 
 #include "base.h"
 
-// extern double viewRadius, viewRotateX, viewRotateY;
-const double VIEWRADIUS = 0.5, VIEWFACTORX = 0.25, VIEWFACTORY = 0.125;
+extern double viewHeight, viewPosX, viewPosZ,
+    viewRadius, viewRotateX, viewRotateY, lastRotateX, lastRotateY;
+extern bool viewMovingForward, viewMovingBackward,
+    viewMovingLeftward, viewMovingRightward;
 
+const double VIEWHEIGHT = 1, VIEWMOVEFACTOR = 0.1,
+    VIEWRADIUS = 5, VIEWROTATEFACTORX = 2.5, VIEWROTATEFACTORY = 1.4;
+
+void updateViewPos();
 void updateViewAng();
-void mouseMove(int x, int y);
-void mouseClick(int button, int state, int x, int y);
+void obverseChange(double &viewRotate, double coord, double &lastRotate, double viewMoveFac);
 
 #endif

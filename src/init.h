@@ -9,11 +9,12 @@ const int  // constants of the window
 const std::string WINTITLE = "EqnoCraft";  // title
 
 const double  // constants of the contants
-    BEDROCKDEPTH = -6, WORLDWIDTH = 10, WORLDLENGTH = 10;  // width_x, length_z
+    BEDROCKDEPTH = -8, WORLDWIDTH = 10, WORLDLENGTH = 10;  // width_x, length_z
 
 void createWindow(int argc, char **argv);
 void loadTexture();
 void initBedrock();
 void initGround();
+void initActor();
 
 #endif

@@ -6,6 +6,7 @@
 #include <gl/gl.h>
 #include <string>
 #include <vector>
+#include <cmath>
 #include <GL/gl.h>
 #include <iostream>
 #include <GL/glu.h>
@@ -21,9 +22,12 @@
 #define SKYCOLOR SKYBLUE, 1
 
 // textures
-extern GLint BEDROCKTEX;
+extern GLint BEDROCKTEX, STONETEX, DIRTTEX, GRASSTOPTEX, GRASSSIDETEX, GRASSBOTTOMTEX;
 
 // coord factors
 const double F = 10;
+
+// math constant
+const double pi = 4*atan(1);
 
 #endif

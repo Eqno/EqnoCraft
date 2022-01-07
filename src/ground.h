@@ -7,24 +7,32 @@
 class Stone: public Block
 {
 public:
-    Stone();
     Stone(double x, double y, double z);
     Stone(double x, double y, double z, double r);
 };
 
-class Grass: public Block
+class Dirt: public Block
 {
 public:
-    Grass();
-    Grass(double x, double y, double z);
-    Grass(double x, double y, double z, double r);
+    Dirt(double x, double y, double z);
+    Dirt(double x, double y, double z, double r);
 };
 
-void addStone();
+class Grass: public Coord
+{
+public:
+    GLint textop, texside, texbottom;
+    Grass(double x, double y, double z);
+    Grass(double x, double y, double z, double r);
+    void show() const;
+};
+
 void addStone(double x, double y, double z);
 void addStone(double x, double y, double z, double r);
 
-void addGrass();
+void addDirt(double x, double y, double z);
+void addDirt(double x, double y, double z, double r);
+
 void addGrass(double x, double y, double z);
 void addGrass(double x, double y, double z, double r);
 

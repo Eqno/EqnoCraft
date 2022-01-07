@@ -7,12 +7,10 @@
 class Bedrock: public Block
 {
 public:
-    Bedrock();
     Bedrock(double x, double y, double z);
     Bedrock(double x, double y, double z, double r);
 };
 
-void addBedrock();
 void addBedrock(double x, double y, double z);
 void addBedrock(double x, double y, double z, double r);
 void renderBedrock();

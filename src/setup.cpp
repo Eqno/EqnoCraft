@@ -1,6 +1,7 @@
 #include "init.h"
-#include "view.h"
+#include "timer.h"
 #include "render.h"
+#include "listener.h"
 using namespace std;
 
 int main(int argc, char **argv)
@@ -10,6 +11,7 @@ int main(int argc, char **argv)
     loadTexture();
     initBedrock();
     initGround();
+    initActor();
     // render
     // glClearColor(SKYCOLOR);
     glEnable(GL_TEXTURE_2D);
@@ -18,7 +20,10 @@ int main(int argc, char **argv)
     // listener
     glutMouseFunc(mouseClick);
     glutMotionFunc(mouseMove);
+    glutKeyboardFunc(keyboardDown);
+    glutKeyboardUpFunc(keyboardUp);
     // loop
+    glutTimerFunc(VIEWMOVETIMERTM, viewMoveTimer, VIEWMOVETIMERID);
     glutMainLoop();
     return 0;
 }

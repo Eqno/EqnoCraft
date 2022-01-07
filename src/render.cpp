@@ -1,6 +1,7 @@
 #include "base.h"
 #include "view.h"
 #include "render.h"
+#include "actor.h"
 #include "ground.h"
 #include "bedrock.h"
 
@@ -16,11 +17,11 @@ void display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-    glLoadIdentity();
     updateViewAng();
-    // renderTeaPot();
+    updateViewPos();
     renderBedrock();
     renderGround();
+    renderActor();
     glutSwapBuffers();
 }
 
