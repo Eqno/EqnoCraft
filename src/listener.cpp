@@ -1,4 +1,5 @@
 #include "view.h"
+#include "timer.h"
 #include "listener.h"
 
 void mouseMove(int x, int y)
@@ -20,6 +21,10 @@ void keyboardDown(unsigned char cmd, int x, int y)
         case 'a': viewMovingLeftward = true; break;
         case 's': viewMovingBackward = true; break;
         case 'd': viewMovingRightward = true; break;
+        case ' ':
+            ifJump = true;
+            dropVelocity = INITJUMPVELOCITY;
+            break;
         default: break;
     }
 }

@@ -51,4 +51,9 @@ void initGround()
             addGrass(i, -1, j);
 }
 
-void initActor() { addActor(); }
+void initActor()
+{
+    // for (int i=-WORLDWIDTH; i<=WORLDWIDTH; i++)
+    //     for (int j=-WORLDLENGTH; j<=WORLDLENGTH; j++)
+    //         addStone(i, 3, j);
+}

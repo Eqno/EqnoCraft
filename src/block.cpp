@@ -1,5 +1,7 @@
 #include "block.h"
 
+std::vector<Coord *> block;
+
 Block::Block(GLint tex, double x, double y, double z): Coord(x, y, z, INITBLOCKRAD)
 { this->texture = tex; }
 Block::Block(GLint tex, double x, double y, double z, double r): Coord(x, y, z, r)
@@ -41,3 +43,6 @@ void Block::show() const
     
     glEnd();
 }
+
+void renderBlock()
+{ for (const auto &i: block) i->show(); }

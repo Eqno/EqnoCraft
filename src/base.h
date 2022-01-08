@@ -25,7 +25,7 @@
 extern GLint BEDROCKTEX, STONETEX, DIRTTEX, GRASSTOPTEX, GRASSSIDETEX, GRASSBOTTOMTEX;
 
 // coord factors
-const double F = 10;
+const double F = 10, G = 5;
 
 // math constant
 const double pi = 4*atan(1);

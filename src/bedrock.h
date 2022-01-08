@@ -13,6 +13,5 @@ public:
 
 void addBedrock(double x, double y, double z);
 void addBedrock(double x, double y, double z, double r);
-void renderBedrock();
 
 #endif

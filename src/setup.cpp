@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     initGround();
     initActor();
     // render
-    // glClearColor(SKYCOLOR);
+    glClearColor(SKYCOLOR);
     glEnable(GL_TEXTURE_2D);
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
@@ -24,6 +24,7 @@ int main(int argc, char **argv)
     glutKeyboardUpFunc(keyboardUp);
     // loop
     glutTimerFunc(VIEWMOVETIMERTM, viewMoveTimer, VIEWMOVETIMERID);
+    glutTimerFunc(VIEWDROPTIMERTM, viewDropTimer, VIEWDROPTIMERID);
     glutMainLoop();
     return 0;
 }

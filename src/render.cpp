@@ -1,7 +1,6 @@
 #include "base.h"
 #include "view.h"
 #include "render.h"
-#include "actor.h"
 #include "ground.h"
 #include "bedrock.h"
 
@@ -19,9 +18,8 @@ void display()
     glEnable(GL_DEPTH_TEST);
     updateViewAng();
     updateViewPos();
-    renderBedrock();
-    renderGround();
-    renderActor();
+    renderBlock();
+    // renderActor();
     glutSwapBuffers();
 }
 
@@ -30,7 +28,7 @@ void reshape(int w, int h)
     glViewport(0, 0, w, h); 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60, (double)w/h, 0.1, RENDERDISTANCE);
+    gluPerspective(60, (double)w/h, 0.001, RENDERDISTANCE);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }

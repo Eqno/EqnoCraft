@@ -36,6 +36,4 @@ void addDirt(double x, double y, double z, double r);
 void addGrass(double x, double y, double z);
 void addGrass(double x, double y, double z, double r);
 
-void renderGround();
-
 #endif

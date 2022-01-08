@@ -1,5 +1,4 @@
 #include "ground.h"
-#include <gl/gl.h>
 
 Stone::Stone(double x, double y, double z): Block(STONETEX, x, y, z) {}
 Stone::Stone(double x, double y, double z, double r): Block(STONETEX, x, y, z, r) {}
@@ -61,28 +60,19 @@ void Grass::show() const
     glEnd();
 }
 
-std::vector<Coord *> stone, dirt, grass;
-
 void addStone(double x, double y, double z)
-{ stone.push_back((Coord *) new Stone(x, y, z)); }
+{ block.push_back((Coord *) new Stone(x, y, z)); }
 
 void addStone(double x, double y, double z, double r)
-{ stone.push_back((Coord *) new Stone(x, y, z, r)); }
+{ block.push_back((Coord *) new Stone(x, y, z, r)); }
 
 void addDirt(double x, double y, double z)
-{ dirt.push_back((Coord *) new Dirt(x, y, z)); }
+{ block.push_back((Coord *) new Dirt(x, y, z)); }
 
 void addDirt(double x, double y, double z, double r)
-{ dirt.push_back((Coord *) new Dirt(x, y, z, r)); }
+{ block.push_back((Coord *) new Dirt(x, y, z, r)); }
 
 void addGrass(double x, double y, double z)
-{ grass.push_back((Coord *) new Grass(x, y, z)); }
+{ block.push_back((Coord *) new Grass(x, y, z)); }
 void addGrass(double x, double y, double z, double r)
-{ grass.push_back((Coord *) new Grass(x, y, z, r)); }
-
-void renderGround()
-{
-    for (const auto &i: stone) i->show();
-    for (const auto &i: dirt) i->show();
-    for (const auto &i: grass) i->show();
-}
+{ block.push_back((Coord *) new Grass(x, y, z, r)); }

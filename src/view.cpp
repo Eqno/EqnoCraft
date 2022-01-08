@@ -16,7 +16,6 @@ void updateViewPos()
 void updateViewAng()
 {   
     glLoadIdentity();
-    glTranslated(0, 0, -viewRadius/F);  // view radius
     if (viewRotateX > 180) viewRotateX = -180;
     if (viewRotateX < -180) viewRotateX = 180;
     if (viewRotateY > 180) viewRotateY = -180;

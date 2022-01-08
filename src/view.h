@@ -8,7 +8,7 @@ extern double viewHeight, viewPosX, viewPosZ,
 extern bool viewMovingForward, viewMovingBackward,
     viewMovingLeftward, viewMovingRightward;
 
-const double VIEWHEIGHT = 1, VIEWMOVEFACTOR = 0.1,
+const double VIEWHEIGHT = 1.5, VIEWMOVEFACTOR = 0.1,
     VIEWRADIUS = 5, VIEWROTATEFACTORX = 2.5, VIEWROTATEFACTORY = 1.4;
 
 void updateViewPos();
