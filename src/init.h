@@ -2,19 +2,21 @@
 #define INIT_H
 
 #include "base.h"
+#include "view.h"
+#include "window.h"
+#include "pointer.h"
+#include "texture.h"
 
-const int  // constants of the window
-    WINWIDTH = 1600, WINHEIGHT = 900,  // size
-    WINPOSX = 0, WINPOSY = 0;  // position
-const std::string WINTITLE = "EqnoCraft";  // title
-
-const double  // constants of the contants
-    BEDROCKDEPTH = -8, WORLDWIDTH = 10, WORLDLENGTH = 10;  // width_x, length_z
+extern Window *eqnoCraft;
+extern View *view;
+extern Coord *pointer;
+extern Texture *texture;
 
 void createWindow(int argc, char **argv);
 void loadTexture();
+void initView();
 void initBedrock();
 void initGround();
-void initActor();
+void initPointer();
 
 #endif

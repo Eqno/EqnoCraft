@@ -1,22 +1,25 @@
+#include "init.h"
+#include "world.h"
 #include "ground.h"
+#include "bedrock.h"
 
-Stone::Stone(double x, double y, double z): Block(STONETEX, x, y, z) {}
-Stone::Stone(double x, double y, double z, double r): Block(STONETEX, x, y, z, r) {}
+Stone::Stone(double x, double y, double z): Block(texture->stone, x, y, z) {}
+Stone::Stone(double x, double y, double z, double r): Block(texture->stone, x, y, z, r) {}
 
-Dirt::Dirt(double x, double y, double z): Block(DIRTTEX, x, y, z) {}
-Dirt::Dirt(double x, double y, double z, double r): Block(DIRTTEX, x, y, z, r) {}
+Dirt::Dirt(double x, double y, double z): Block(texture->dirt, x, y, z) {}
+Dirt::Dirt(double x, double y, double z, double r): Block(texture->dirt, x, y, z, r) {}
 
-Grass::Grass(double x, double y, double z): Coord(x, y, z, INITBLOCKRAD)
+Grass::Grass(double x, double y, double z): Coord(x, y, z, Block::INIT_RAD)
 {
-    this->textop = GRASSTOPTEX;
-    this->texside = GRASSSIDETEX;
-    this->texbottom = GRASSBOTTOMTEX;
+    this->textop = texture->grass_top;
+    this->texside = texture->grass_side;
+    this->texbottom = texture->grass_bottom;
 }
 Grass::Grass(double x, double y, double z, double r): Coord(x, y, z, r)
 {
-    this->textop = GRASSTOPTEX;
-    this->texside = GRASSSIDETEX;
-    this->texbottom = GRASSBOTTOMTEX;
+    this->textop = texture->grass_top;
+    this->texside = texture->grass_side;
+    this->texbottom = texture->grass_bottom;
 }
 void Grass::show() const
 {
@@ -76,3 +79,18 @@ void addGrass(double x, double y, double z)
 { block.push_back((Coord *) new Grass(x, y, z)); }
 void addGrass(double x, double y, double z, double r)
 { block.push_back((Coord *) new Grass(x, y, z, r)); }
+
+GroundLayer::GroundLayer()
+{
+    for (int k=BedrockLayer::INIT_DEPTH+1; k<=-5; k++)
+        for (int i=-World::INIT_WIDTH; i<=World::INIT_WIDTH; i++)
+            for (int j=-World::INIT_LENGTH; j<=World::INIT_LENGTH; j++)
+                addStone(i, k, j);
+    for (int k=-4; k<=-2; k++)
+        for (int i=-World::INIT_WIDTH; i<=World::INIT_WIDTH; i++)
+            for (int j=-World::INIT_LENGTH; j<=World::INIT_LENGTH; j++)
+                addDirt(i, k, j);
+    for (int i=-World::INIT_WIDTH; i<=World::INIT_WIDTH; i++)
+        for (int j=-World::INIT_LENGTH; j<=World::INIT_LENGTH; j++)
+            addGrass(i, -1, j);
+}

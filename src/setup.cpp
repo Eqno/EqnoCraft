@@ -9,9 +9,10 @@ int main(int argc, char **argv)
     // init
     createWindow(argc, argv);
     loadTexture();
+    initView();
     initBedrock();
     initGround();
-    initActor();
+    initPointer();
     // render
     glClearColor(SKYCOLOR);
     glEnable(GL_TEXTURE_2D);
@@ -19,7 +20,8 @@ int main(int argc, char **argv)
     glutReshapeFunc(reshape);
     // listener
     glutMouseFunc(mouseClick);
-    glutMotionFunc(mouseMove);
+    glutMotionFunc(mouseClickMove);
+    glutPassiveMotionFunc(mouseMove);
     glutKeyboardFunc(keyboardDown);
     glutKeyboardUpFunc(keyboardUp);
     // loop

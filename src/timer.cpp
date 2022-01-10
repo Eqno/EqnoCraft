@@ -1,32 +1,34 @@
 #include "view.h"
 #include "timer.h"
 #include "block.h"
+#include "init.h"
+#include "listener.h"
 
 void viewMoveTimer(int id)
 {
-    if (viewMovingForward || viewMovingBackward || viewMovingLeftward || viewMovingRightward)
+    if (view->movingForward || view->movingBackward || view->movingLeftward || view->movingRightward)
     {
-        double delCos = VIEWMOVEFACTOR * cos(viewRotateX*pi/180);
-        double delSin = VIEWMOVEFACTOR * sin(viewRotateX*pi/180);
-        if (viewMovingForward)
+        double delCos = View::MOVE_FACTOR * cos(view->rotateX*pi/180);
+        double delSin = View::MOVE_FACTOR * sin(view->rotateX*pi/180);
+        if (view->movingForward)
         {
-            viewPosZ += delCos;
-            viewPosX -= delSin;
+            view->z += delCos;
+            view->x -= delSin;
         }
-        else if (viewMovingBackward)
+        else if (view->movingBackward)
         {
-            viewPosZ -= delCos;
-            viewPosX += delSin;
+            view->z -= delCos;
+            view->x += delSin;
         }
-        if (viewMovingLeftward)
+        if (view->movingLeftward)
         {
-            viewPosX += delCos;
-            viewPosZ += delSin;
+            view->x += delCos;
+            view->z += delSin;
         }
-        else if (viewMovingRightward)
+        else if (view->movingRightward)
         {
-            viewPosX -= delCos;
-            viewPosZ -= delSin;
+            view->x -= delCos;
+            view->z -= delSin;
         }
         glutPostRedisplay();
     }
@@ -39,32 +41,32 @@ void viewDropTimer(int id)
 {
     if (ifJump)
     {
-        viewHeight -= dropVelocity;
+        view->y -= dropVelocity;
         ifJump = false;
         goto nextLoop;
     }
     for (const auto &i: block)
     {
-        if (viewPosX>=i->x-i->r && viewPosX<=i->x+i->r
-            && viewPosZ>=i->z-i->r && viewPosZ<=i->z+i->r)
+        if (view->x>=i->x-i->r && view->x<=i->x+i->r
+            && view->z>=i->z-i->r && view->z<=i->z+i->r)
         {
-            if (viewHeight >= i->y
-                && viewHeight-dropVelocity <= i->y+INITBLOCKRAD+VIEWHEIGHT)
+            if (view->y >= i->y
+                && view->y-dropVelocity <= i->y+Block::INIT_RAD+View::INIT_HEIGHT)
             {
-                viewHeight = i->y + INITBLOCKRAD + VIEWHEIGHT;
+                view->y = i->y + Block::INIT_RAD + View::INIT_HEIGHT;
                 dropVelocity = 0;
                 goto nextLoop;
             }
-            else if (viewHeight <= i->y
-                && viewHeight-dropVelocity >= i->y-5*INITBLOCKRAD+VIEWHEIGHT)
+            else if (view->y <= i->y
+                && view->y-dropVelocity >= i->y-5*Block::INIT_RAD+View::INIT_HEIGHT)
             {
-                viewHeight = i->y - 5*INITBLOCKRAD + VIEWHEIGHT;
+                view->y = i->y - 5*Block::INIT_RAD + View::INIT_HEIGHT;
                 dropVelocity = -dropVelocity;
                 goto nextLoop;
             }
         }
     }
-    viewHeight -= dropVelocity;
+    view->y -= dropVelocity;
     dropVelocity += G/GRAVITYFACTOR;
 nextLoop:
     glutPostRedisplay();

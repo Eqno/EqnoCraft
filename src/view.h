@@ -2,17 +2,22 @@
 #define VIEW_H
 
 #include "base.h"
+#include "coord.h"
 
-extern double viewHeight, viewPosX, viewPosZ,
-    viewRadius, viewRotateX, viewRotateY, lastRotateX, lastRotateY;
-extern bool viewMovingForward, viewMovingBackward,
-    viewMovingLeftward, viewMovingRightward;
-
-const double VIEWHEIGHT = 1.5, VIEWMOVEFACTOR = 0.1,
-    VIEWRADIUS = 5, VIEWROTATEFACTORX = 2.5, VIEWROTATEFACTORY = 1.4;
-
-void updateViewPos();
-void updateViewAng();
-void obverseChange(double &viewRotate, double coord, double &lastRotate, double viewMoveFac);
+class View: public Coord
+{
+public:
+    static constexpr double INIT_HEIGHT = 1.5, MOVE_FACTOR = 0.1,
+    INIT_RADIUS = 5, ROTATE_FACTOR_X = 2.5, ROTATE_FACTOR_Y = 1.4;
+    // double x, y, z, r;
+    double rotateX, rotateY, lastRotateX, lastRotateY;
+    bool movingForward, movingBackward, movingLeftward, movingRightward;
+    View();
+    void updatePos();
+    void updateAng();
+    void updateRotate(double &viewRotate, double coord, double &lastRotate, double viewMoveFac);
+    void show() const;
+};
+void lockMousePos();
 
 #endif

@@ -21,9 +21,6 @@
 // specific colors
 #define SKYCOLOR SKYBLUE, 1
 
-// textures
-extern GLint BEDROCKTEX, STONETEX, DIRTTEX, GRASSTOPTEX, GRASSSIDETEX, GRASSBOTTOMTEX;
-
 // coord factors
 const double F = 10, G = 5;
 

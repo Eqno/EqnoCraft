@@ -3,6 +3,8 @@
 #include "render.h"
 #include "ground.h"
 #include "bedrock.h"
+#include "init.h"
+#include "listener.h"
 
 void renderTeaPot()
 {
@@ -16,10 +18,12 @@ void display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-    updateViewAng();
-    updateViewPos();
+    view->updateAng();
+    view->updatePos();
     renderBlock();
-    // renderActor();
+    glDisable(GL_DEPTH_TEST);
+    glLoadIdentity();
+    renderPointer();
     glutSwapBuffers();
 }
 
@@ -31,4 +35,5 @@ void reshape(int w, int h)
     gluPerspective(60, (double)w/h, 0.001, RENDERDISTANCE);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    eqnoCraft->updateSize(w, h);
 }

@@ -1,29 +1,50 @@
 #include "view.h"
 #include "timer.h"
+#include "init.h"
 #include "listener.h"
+#include "window.h"
+
+bool mouseLocked = false;
 
 void mouseMove(int x, int y)
+{ if (mouseLocked) mouseClickMove(x, y); }
+
+void mouseClickMove(int x, int y)
 {
-    obverseChange(viewRotateX, x, lastRotateX, VIEWROTATEFACTORX);
-    obverseChange(viewRotateY, y, lastRotateY, VIEWROTATEFACTORY);
+    view->updateRotate(view->rotateX, x, view->lastRotateX, View::ROTATE_FACTOR_X);
+    view->updateRotate(view->rotateY, y, view->lastRotateY, View::ROTATE_FACTOR_Y);
 }
 
 void mouseClick(int button, int state, int x, int y)
 {
-    if (state == GLUT_DOWN) lastRotateX = x, lastRotateY = y;
+    if (state == GLUT_DOWN) if (! mouseLocked) view->lastRotateX = x, view->lastRotateY = y;
 }
 
 void keyboardDown(unsigned char cmd, int x, int y)
 {
     switch (cmd) 
     {
-        case 'w': viewMovingForward = true; break;
-        case 'a': viewMovingLeftward = true; break;
-        case 's': viewMovingBackward = true; break;
-        case 'd': viewMovingRightward = true; break;
+        case 'w': view->movingForward = true; break;
+        case 'a': view->movingLeftward = true; break;
+        case 's': view->movingBackward = true; break;
+        case 'd': view->movingRightward = true; break;
         case ' ':
             ifJump = true;
-            dropVelocity = INITJUMPVELOCITY;
+            dropVelocity = INIT_JUMP_VELOCITY;
+            break;
+        case '`':
+            mouseLocked = !mouseLocked;
+            if (mouseLocked)
+            {
+                while (ShowCursor(FALSE) >= 0)
+                    ShowCursor(FALSE);
+            }
+            else
+            {
+                while (ShowCursor(TRUE) < 0)
+                    ShowCursor(TRUE);
+            }
+            lockMousePos();
             break;
         default: break;
     }
@@ -33,10 +54,10 @@ void keyboardUp(unsigned char cmd, int x, int y)
 {
     switch (cmd) 
     {
-        case 'w': viewMovingForward = false; break;
-        case 'a': viewMovingLeftward = false; break;
-        case 's': viewMovingBackward = false; break;
-        case 'd': viewMovingRightward = false; break;
+        case 'w': view->movingForward = false; break;
+        case 'a': view->movingLeftward = false; break;
+        case 's': view->movingBackward = false; break;
+        case 'd': view->movingRightward = false; break;
         default: break;
     }
 }

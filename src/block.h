@@ -5,12 +5,11 @@
 #include "coord.h"
 #include <vector>
 
-const double INITBLOCKRAD = 0.5;
-
 class Block: public Coord
 {
 public:
-    GLint texture;
+    static constexpr double INIT_RAD = 0.5;
+    GLint blockTex;
     Block(GLint tex, double x, double y, double z);
     Block(GLint tex, double x, double y, double z, double r);
     void show() const;
