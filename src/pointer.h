@@ -9,7 +9,7 @@ enum PointerStyle
 class Pointer: public Coord
 {
 private:
-    static constexpr double INIT_RAD = 0.1, INIT_DIS = 10, INIT_WEIGHT = 2;
+    static constexpr double INIT_RAD = 0.1, INIT_DIS = 10, INIT_WEIGHT = 1;
 public:
     double w, *color;
     int style;  // 0->CROSS

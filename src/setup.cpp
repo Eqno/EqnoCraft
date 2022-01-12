@@ -12,7 +12,9 @@ int main(int argc, char **argv)
     initView();
     initBedrock();
     initGround();
+    initExposed();
     initPointer();
+    initCollisionBox();
     // render
     glClearColor(SKYCOLOR);
     glEnable(GL_TEXTURE_2D);

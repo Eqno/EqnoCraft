@@ -1,8 +1,8 @@
+#include "init.h"
 #include "view.h"
 #include "timer.h"
-#include "init.h"
-#include "listener.h"
 #include "window.h"
+#include "listener.h"
 
 bool mouseLocked = false;
 

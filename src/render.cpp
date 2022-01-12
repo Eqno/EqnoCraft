@@ -1,10 +1,11 @@
-#include "base.h"
+#include "init.h"
 #include "view.h"
 #include "render.h"
 #include "ground.h"
+#include "config.h"
 #include "bedrock.h"
-#include "init.h"
 #include "listener.h"
+#include "collision.h"
 
 void renderTeaPot()
 {
@@ -20,7 +21,11 @@ void display()
     glEnable(GL_DEPTH_TEST);
     view->updateAng();
     view->updatePos();
+    collBox->updateAng();
+    collBox->updatePos();
     renderBlock();
+    renderCollisionBox();
+    
     glDisable(GL_DEPTH_TEST);
     glLoadIdentity();
     renderPointer();
@@ -32,7 +37,7 @@ void reshape(int w, int h)
     glViewport(0, 0, w, h); 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60, (double)w/h, 0.001, RENDERDISTANCE);
+    gluPerspective(60, (double)w/h, 0.01, RENDERDISTANCE);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     eqnoCraft->updateSize(w, h);

@@ -1,18 +1,10 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include <GL/freeglut_std.h>
-// It has to be defined before any other .h in GL.
-#include <gl/gl.h>
-#include <string>
-#include <vector>
 #include <cmath>
-#include <GL/gl.h>
-#include <iostream>
-#include <GL/glu.h>
-#include <GL/glut.h>
 
 // common colors
+#define RED 1, 0, 0
 #define WHITE 1, 1, 1
 #define BLACK 0, 0, 0
 #define YELLOW 1, 1, 0
@@ -25,6 +17,9 @@
 const double F = 10, G = 5;
 
 // math constant
-const double pi = 4*atan(1);
+const double pi = 4*atan(1), EPS = 1e-4;
+
+// types
+#define ull unsigned long long
 
 #endif

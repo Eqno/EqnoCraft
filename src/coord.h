@@ -1,14 +1,19 @@
 #ifndef COORD_H
 #define COORD_H
 
-#include "base.h"
-
-class Coord
+class Point
 {
 public:
-    double x, y, z, r;
-    Coord(double x, double y, double z);
-    Coord(double x, double y, double z, double r);
+    double x, y, z;
+    Point(double, double, double);
+};
+
+class Coord: public Point
+{
+public:
+    double r;
+    Coord(double, double, double);
+    Coord(double, double, double, double);
     virtual void show() const = 0;
 };
 

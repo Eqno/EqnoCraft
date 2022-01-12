@@ -1,3 +1,4 @@
+#include "init.h"
 #include "world.h"
 #include "bedrock.h"
 
@@ -5,9 +6,9 @@ Bedrock::Bedrock(double x, double y, double z): Block(texture->bedrock, x, y, z)
 Bedrock::Bedrock(double x, double y, double z, double r): Block(texture->bedrock, x, y, z, r) {}
 
 void addBedrock(double x, double y, double z)
-{ block.push_back((Coord *) new Bedrock(x, y, z)); }
+{ addBlock<Bedrock>(x, y, z); }
 void addBedrock(double x, double y, double z, double r)
-{ block.push_back((Coord *) new Bedrock(x, y, z, r)); }
+{ addBlock<Bedrock>(x, y, z, r); }
 
 BedrockLayer::BedrockLayer()
 {

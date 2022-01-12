@@ -1,8 +1,6 @@
 #ifndef BEDROCK_H
 #define BEDROCK_H
 
-#include "init.h"
-#include "base.h"
 #include "block.h"
 
 class Bedrock: public Block

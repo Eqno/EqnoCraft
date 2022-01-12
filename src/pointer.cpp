@@ -1,7 +1,6 @@
-#include "base.h"
 #include "init.h"
+#include "config.h"
 #include "pointer.h"
-#include <gl/gl.h>
 
 Pointer::Pointer(): Coord(0, 0, Pointer::INIT_DIS, Pointer::INIT_RAD)
 {

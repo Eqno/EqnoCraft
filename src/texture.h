@@ -1,7 +1,11 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include "base.h"
+#include <GL/freeglut.h>
+#include <GL/gl.h>
+
+#include "utils.h"
+#include "config.h"
 
 class Texture
 {

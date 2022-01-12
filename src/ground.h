@@ -1,7 +1,9 @@
 #ifndef GROUND_H
 #define GROUND_H
 
-#include "base.h"
+#include <GL/freeglut_std.h>
+#include <GL/gl.h>
+
 #include "block.h"
 
 class Stone: public Block

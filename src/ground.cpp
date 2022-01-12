@@ -64,21 +64,21 @@ void Grass::show() const
 }
 
 void addStone(double x, double y, double z)
-{ block.push_back((Coord *) new Stone(x, y, z)); }
+{ addBlock<Stone>(x, y, z); }
 
 void addStone(double x, double y, double z, double r)
-{ block.push_back((Coord *) new Stone(x, y, z, r)); }
+{ addBlock<Stone>(x, y, z, r); }
 
 void addDirt(double x, double y, double z)
-{ block.push_back((Coord *) new Dirt(x, y, z)); }
+{ addBlock<Dirt>(x, y, z); }
 
 void addDirt(double x, double y, double z, double r)
-{ block.push_back((Coord *) new Dirt(x, y, z, r)); }
+{ addBlock<Dirt>(x, y, z, r); }
 
 void addGrass(double x, double y, double z)
-{ block.push_back((Coord *) new Grass(x, y, z)); }
+{ addBlock<Grass>(x, y, z); }
 void addGrass(double x, double y, double z, double r)
-{ block.push_back((Coord *) new Grass(x, y, z, r)); }
+{ addBlock<Grass>(x, y, z, r); }
 
 GroundLayer::GroundLayer()
 {

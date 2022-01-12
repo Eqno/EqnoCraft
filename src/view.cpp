@@ -2,8 +2,10 @@
 #include "listener.h"
 #include "init.h"
 
-View::View(): Coord(0, View::INIT_HEIGHT, 0, View::INIT_RADIUS)
+View::View(): Coord(0, 0, 0, View::INIT_COLL_RAD)
 {
+    this->distance = View::INIT_DISTANCE;
+    this->rotateRad = View::INIT_ROTATE_RAD;
     this->rotateX = 0, this->rotateY = 0;
     this->lastRotateX = rotateX, this->lastRotateY = rotateY;
     this->movingForward = this->movingBackward
@@ -19,9 +21,9 @@ void lockMousePos()
 
 void View::updatePos()
 {
-    glTranslated(this->x/F, 0, 0);  // view pos x
-    glTranslated(0, 0, this->z/F);  // view pos z
-    glTranslated(0, -this->y/F, 0);  // actor height
+    glTranslated(-this->x/F, 0, 0);  // view pos x
+    glTranslated(0, 0, -this->z/F);  // view pos z
+    glTranslated(0, -(this->y+View::INIT_HEIGHT)/F, 0);  // actor height
 }
 
 void View::updateAng()
@@ -37,7 +39,7 @@ void View::updateAng()
 
 void View::updateRotate(double &viewRotate, double coord, double &lastRotate, double viewMoveFac)
 {
-    viewRotate += viewMoveFac * (coord-lastRotate) / View::INIT_RADIUS;
+    viewRotate += viewMoveFac * (coord-lastRotate) / view->rotateRad;
     lastRotate = coord;
     glutPostRedisplay();
     lockMousePos();

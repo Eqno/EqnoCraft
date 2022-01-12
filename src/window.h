@@ -1,7 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "base.h"
+#include <string>
+
+#include "utils.h"
+#include "config.h"
 
 class Window
 {

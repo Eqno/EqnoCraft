@@ -1,7 +1,7 @@
 g++ -o EqnoCraft.exe ^
-src/setup.cpp src/window.cpp ^
-src/init.cpp src/texture.cpp ^
-src/render.cpp src/view.cpp ^
+src/setup.cpp src/window.cpp src/utils.cpp ^
+src/init.cpp src/texture.cpp src/transform.cpp ^
+src/render.cpp src/view.cpp src/collision.cpp ^
 src/pointer.cpp src/coord.cpp src/block.cpp ^
 src/bedrock.cpp src/ground.cpp ^
 src/listener.cpp src/timer.cpp ^

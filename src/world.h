@@ -4,7 +4,7 @@
 class World
 {
 public:
-    static const int INIT_WIDTH = 10, INIT_LENGTH = 10;
+    static const int INIT_WIDTH = 20, INIT_LENGTH = 20;
 };
 
 #endif
