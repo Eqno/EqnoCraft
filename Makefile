@@ -5,8 +5,9 @@ LDFLAGS = -Wall -Werror -Wextra \
 	-O2 -static-libgcc -static -std=c17 \
 	-lfreeglut_static -lopengl32 -lwinmm -lgdi32 -lglu32
 
-EXEC = EqnoCraft.exe
+EXEC = EqnoCraft.exe 
 SRC = $(wildcard src/*.cpp)
+HEAD = $(wildcard include/*.h)
 OBJ = $(SRC:src/%.cpp=build/%.o)
 
 all: build $(EXEC)
@@ -14,9 +15,9 @@ all: build $(EXEC)
 
 build:
 	@mkdir build
-
+	
 $(EXEC): $(OBJ)
 	@$(CXX) $(OBJ) $(LDFLAGS) -o $@
 
-build/%.o: src/%.cpp
+build/%.o: src/%.cpp $(HEAD)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
