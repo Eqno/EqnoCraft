@@ -1,7 +1,7 @@
-#include "init.h"
-#include "timer.h"
-#include "render.h"
-#include "listener.h"
+#include "../include/init.h"
+#include "../include/timer.h"
+#include "../include/render.h"
+#include "../include/listener.h"
 using namespace std;
 
 int main(int argc, char **argv)
@@ -12,7 +12,6 @@ int main(int argc, char **argv)
     initView();
     initBedrock();
     initGround();
-    initExposed();
     initPointer();
     initCollisionBox();
     // render

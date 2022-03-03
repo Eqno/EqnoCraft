@@ -1,11 +1,12 @@
-#include "init.h"
-#include "view.h"
-#include "render.h"
-#include "ground.h"
-#include "config.h"
-#include "bedrock.h"
-#include "listener.h"
-#include "collision.h"
+#include "../include/init.h"
+#include "../include/view.h"
+#include "../include/render.h"
+#include "../include/ground.h"
+#include "../include/config.h"
+#include "../include/bedrock.h"
+#include "../include/pointer.h"
+#include "../include/listener.h"
+#include "../include/collision.h"
 
 void renderTeaPot()
 {
@@ -25,7 +26,6 @@ void display()
     collBox->updatePos();
     renderBlock();
     renderCollisionBox();
-    
     glDisable(GL_DEPTH_TEST);
     glLoadIdentity();
     renderPointer();

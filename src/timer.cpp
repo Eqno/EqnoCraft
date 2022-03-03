@@ -1,9 +1,9 @@
-#include "view.h"
-#include "timer.h"
-#include "block.h"
-#include "init.h"
-#include "utils.h"
-#include "listener.h"
+#include "../include/view.h"
+#include "../include/timer.h"
+#include "../include/block.h"
+#include "../include/init.h"
+#include "../include/utils.h"
+#include "../include/listener.h"
 
 double dis(double x1, double z1, double x2, double z2)
 { return sqrt((x1-x2)*(x1-x2)+(z1-z2)*(z1-z2)); }
@@ -26,13 +26,13 @@ int judgeBorder(double x, double z, Coord *const i)
 
 // FIXME: wall corner collision doesn't work normally
 bool judgeMove(double x, double y, double z, double &nx, double &nz)
-{/*
+{
     double dx = nx - x, dz = nz - z;
-    int startX = (int) (view->x+0.5)-1, endX = (int) (view->x+0.5)+1;
-    int startZ = (int) (view->z+0.5)-1, endZ = (int) (view->z+0.5)+1;
+    int startX = (int) (view->x)-2, endX = (int) (view->x)+2;
+    int startZ = (int) (view->z)-2, endZ = (int) (view->z)+2;
     for (int coordX=startX; coordX<=endX; coordX++)
         for (int coordZ=startZ; coordZ<=endZ; coordZ++)
-            for (const auto &block: surface[getHash(coordX, coordZ)])
+            for (const auto &block: block[getHash(coordX, coordZ)])
             {
                 const auto &i = block.second;
                 if (y < i->y+2*i->r && y > i->y-4*i->r)
@@ -73,28 +73,26 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             }
                         }
                     }
-                    int judgeResult = judgeBorder(x, z, i);
-                    if (judgeResult)
-                    {
-                        double verVecX = 0, verVecZ = 0;
-                        if (judgeResult == 1) verVecX = -(i->z-i->r-z), verVecZ = i->x-i->r-x;
-                        if (judgeResult == 2) verVecX = -(i->z+i->r-z), verVecZ = i->x-i->r-x;
-                        if (judgeResult == 3) verVecX = -(i->z+i->r-z), verVecZ = i->x+i->r-x;
-                        if (judgeResult == 4) verVecX = -(i->z-i->r-z), verVecZ = i->x+i->r-x;
-                        unitization(verVecX, verVecZ);
-                        double verDis = projection(dx, dz, verVecX, verVecZ);
-                        double delX = verVecX*verDis/F, delZ = verVecZ*verDis/F;
-                        if (dz < 0)
-                            nx = x - delX, nz = z - delZ;
-                        else nx = x + delX, nz = z + delZ;
-                        // x -> -verVecZ, z = verVecX
-                        nx += -verVecZ/30, nz += verVecX/30;
-                        return true;
-                    }
+                    // int judgeResult = judgeBorder(x, z, i);
+                    // if (judgeResult)
+                    // {
+                    //     double verVecX = 0, verVecZ = 0;
+                    //     if (judgeResult == 1) verVecX = -(i->z-i->r-z), verVecZ = i->x-i->r-x;
+                    //     if (judgeResult == 2) verVecX = -(i->z+i->r-z), verVecZ = i->x-i->r-x;
+                    //     if (judgeResult == 3) verVecX = -(i->z+i->r-z), verVecZ = i->x+i->r-x;
+                    //     if (judgeResult == 4) verVecX = -(i->z-i->r-z), verVecZ = i->x+i->r-x;
+                    //     unitization(verVecX, verVecZ);
+                    //     double verDis = projection(dx, dz, verVecX, verVecZ);
+                    //     double delX = verVecX*verDis/F, delZ = verVecZ*verDis/F;
+                    //     if (dz < 0)
+                    //         nx = x - delX, nz = z - delZ;
+                    //     else nx = x + delX, nz = z + delZ;
+                    //     // x -> -verVecZ, z = verVecX
+                    //     nx += -verVecZ/30, nz += verVecX/30;
+                    //     return true;
+                    // }
                 }
             }
-    return true;
-*/
     return true;
 }
 
@@ -166,7 +164,7 @@ void viewDropTimer(int id)
     }
     for (int coordX=startX; coordX<=endX; coordX++)
         for (int coordZ=startZ; coordZ<=endZ; coordZ++)
-            for (const auto &block: surface[getHash(coordX, coordZ)])
+            for (const auto &block: block[getHash(coordX, coordZ)])
             {
                 const auto &i = block.second;
                 if (view->x > i->x-i->r && view->x < i->x+i->r)

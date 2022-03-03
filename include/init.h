@@ -17,7 +17,6 @@ void loadTexture();
 void initView();
 void initBedrock();
 void initGround();
-void initExposed();
 void initPointer();
 void initCollisionBox();
 

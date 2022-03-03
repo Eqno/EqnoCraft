@@ -20,31 +20,24 @@ public:
 };
 
 extern std::unordered_map<unsigned long long,
-    std::unordered_map<int, Coord *>> inside, surface;
+    std::unordered_map<int, Coord *>> block;
 
-bool checkExposed(double, double, double);
-void updateAround(double, double, double);
-void updateExposed(int, int, int);
 void renderBlock();
 
 template <class T>
 inline void addBlock(double x, double y, double z)
 {
     ull hash = getHash(x, z);
-    Coord *block = new T(x, y, z);
-    if (checkExposed(x, y, z)) surface[hash][y] = block;
-    else inside[hash][y] = block;
-    updateAround(x, y, z);
+    Coord *newBlock = new T(x, y, z);
+    block[hash][y] = newBlock;
 }
 
 template <class T>
 inline void addBlock(double x, double y, double z, double r)
 {
     ull hash = getHash(x, z);
-    Coord *block = new T(x, y, z, r);
-    if (checkExposed(x, y, z)) surface[hash][y] = block;
-    else inside[hash][y] = block;
-    updateAround(x, y, z);
+    Coord *newBlock = new T(x, y, z, r);
+    block[hash][y] = newBlock;
 }
 
 /*

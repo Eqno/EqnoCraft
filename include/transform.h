@@ -1,6 +1,7 @@
 #ifndef TRANSFORM_H
 #define TRANSFORM_H
 
+#include <vector>
 #include "utils.h"
 #include "config.h"
 #include "coord.h"

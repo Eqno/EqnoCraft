@@ -1,7 +1,7 @@
-#include "init.h"
-#include "world.h"
-#include "ground.h"
-#include "bedrock.h"
+#include "../include/init.h"
+#include "../include/world.h"
+#include "../include/ground.h"
+#include "../include/bedrock.h"
 
 Stone::Stone(double x, double y, double z): Block(texture->stone, x, y, z) {}
 Stone::Stone(double x, double y, double z, double r): Block(texture->stone, x, y, z, r) {}

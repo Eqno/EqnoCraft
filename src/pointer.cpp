@@ -1,6 +1,6 @@
-#include "init.h"
-#include "config.h"
-#include "pointer.h"
+#include "../include/init.h"
+#include "../include/config.h"
+#include "../include/pointer.h"
 
 Pointer::Pointer(): Coord(0, 0, Pointer::INIT_DIS, Pointer::INIT_RAD)
 {
