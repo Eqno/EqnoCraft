@@ -9,22 +9,13 @@ double dis(double x1, double z1, double x2, double z2)
 { return sqrt((x1-x2)*(x1-x2)+(z1-z2)*(z1-z2)); }
 double norm(double x, double z) { return sqrt(x*x+z*z); }
 double projection(double x1, double z1, double x2, double z2)
-{ return (x1*z1+x2*z2)/norm(x2, z2); }
+{ return (x1*z1+x2*z2) / norm(x2, z2); }
 void unitization(double &x, double &z)
 {
     double nor = norm(x, z);
     x /= nor, z /= nor;
 }
-int judgeBorder(double x, double z, Coord *const i)
-{
-    if (dis(x, z, i->x-i->r, i->z-i->r) < view->r) return 1;
-    if (dis(x, z, i->x-i->r, i->z+i->r) < view->r) return 2;
-    if (dis(x, z, i->x+i->r, i->z+i->r) < view->r) return 3;
-    if (dis(x, z, i->x+i->r, i->z-i->r) < view->r) return 4;
-    return 0;
-}
 
-// FIXME: wall corner collision doesn't work normally
 bool judgeMove(double x, double y, double z, double &nx, double &nz)
 {
     double dx = nx - x, dz = nz - z;
@@ -37,7 +28,7 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                 const auto &i = block.second;
                 if (y < i->y+2*i->r && y > i->y-4*i->r)
                 {
-                    if (nx >= i->x-i->r && nx <= i->x+i->r)
+                    if (nx >= i->x-i->r-view->r && nx <= i->x+i->r+view->r)
                     {
                         if (nz > i->z-i->r-view->r && nz < i->z+i->r+view->r)
                         {
@@ -55,7 +46,7 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             }
                         }
                     }
-                    if (nz >= i->z-i->r && nz <= i->z+i->r)
+                    if (nz >= i->z-i->r-view->r && nz <= i->z+i->r+view->r)
                     {
                         if (nx > i->x-i->r-view->r && nx < i->x+i->r+view->r)
                         {
@@ -73,24 +64,6 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             }
                         }
                     }
-                    // int judgeResult = judgeBorder(x, z, i);
-                    // if (judgeResult)
-                    // {
-                    //     double verVecX = 0, verVecZ = 0;
-                    //     if (judgeResult == 1) verVecX = -(i->z-i->r-z), verVecZ = i->x-i->r-x;
-                    //     if (judgeResult == 2) verVecX = -(i->z+i->r-z), verVecZ = i->x-i->r-x;
-                    //     if (judgeResult == 3) verVecX = -(i->z+i->r-z), verVecZ = i->x+i->r-x;
-                    //     if (judgeResult == 4) verVecX = -(i->z-i->r-z), verVecZ = i->x+i->r-x;
-                    //     unitization(verVecX, verVecZ);
-                    //     double verDis = projection(dx, dz, verVecX, verVecZ);
-                    //     double delX = verVecX*verDis/F, delZ = verVecZ*verDis/F;
-                    //     if (dz < 0)
-                    //         nx = x - delX, nz = z - delZ;
-                    //     else nx = x + delX, nz = z + delZ;
-                    //     // x -> -verVecZ, z = verVecX
-                    //     nx += -verVecZ/30, nz += verVecX/30;
-                    //     return true;
-                    // }
                 }
             }
     return true;
@@ -154,8 +127,8 @@ do { \
 } while (0)
 void viewDropTimer(int id)
 {
-    int startX = (int) (view->x+0.5)-1, endX = (int) (view->x+0.5)+1;
-    int startZ = (int) (view->z+0.5)-1, endZ = (int) (view->z+0.5)+1;
+    int startX = (int) (view->x)-2, endX = (int) (view->x)+2;
+    int startZ = (int) (view->z)-2, endZ = (int) (view->z)+2;
     if (ifJump)
     {
         view->y -= dropVelocity;
@@ -167,14 +140,12 @@ void viewDropTimer(int id)
             for (const auto &block: block[getHash(coordX, coordZ)])
             {
                 const auto &i = block.second;
-                if (view->x > i->x-i->r && view->x < i->x+i->r)
+                if (view->x > i->x-i->r-view->r && view->x < i->x+i->r+view->r)
                     if (view->z > i->z-i->r-view->r && view->z < i->z+i->r+view->r)
                         updateVelocity();
-                if (view->z > i->z-i->r && view->z < i->z+i->r)
+                if (view->z > i->z-i->r-view->r && view->z < i->z+i->r+view->r)
                     if (view->x > i->x-i->r-view->r && view->x < i->x+i->r+view->r)
                         updateVelocity();
-                if (judgeBorder(view->x, view->z, i))
-                    updateVelocity();
             }
     view->y -= dropVelocity;
     dropVelocity += G/GRAVITYFACTOR;
