@@ -7,12 +7,21 @@
 bool mouseLocked = false;
 
 void mouseMove(int x, int y)
-{ if (mouseLocked) mouseClickMove(x, y); }
+{
+    if (mouseLocked)
+    {
+        view->updateRotate(view->rotateX, x, view->lastRotateX, View::LOCK_ROTATE_FACTOR_X);
+        view->updateRotate(view->rotateY, y, view->lastRotateY, View::LOCK_ROTATE_FACTOR_Y);
+    }
+}
 
 void mouseClickMove(int x, int y)
 {
-    view->updateRotate(view->rotateX, x, view->lastRotateX, View::ROTATE_FACTOR_X);
-    view->updateRotate(view->rotateY, y, view->lastRotateY, View::ROTATE_FACTOR_Y);
+    if (! mouseLocked)
+    {
+        view->updateRotate(view->rotateX, x, view->lastRotateX, View::CLICK_ROTATE_FACTOR_X);
+        view->updateRotate(view->rotateY, y, view->lastRotateY, View::CLICK_ROTATE_FACTOR_Y);
+    }
 }
 
 void mouseClick(int button, int state, int x, int y)

@@ -61,5 +61,4 @@ void renderBlock()
         for (int j=startZ; j<=endZ; j++)
             for (const auto &k: block[getHash(i, j)])
                 k.second->show(), cot ++;
-    std::cout << cot << std::endl;
 }
