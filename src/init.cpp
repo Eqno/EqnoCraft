@@ -33,10 +33,10 @@ void initBedrock()
 void initGround()
 {
     new GroundLayer();
-    for (int k=0; k<5; k++)
-        for (int i=-5; i<=5; i++)
-            for (int j=-2; j>=-10; j--)
-                addStone(i, k, j);
+    // for (int k=0; k<5; k++)
+    //     for (int i=-5; i<=5; i++)
+    //         for (int j=-2; j>=-10; j--)
+    //             addStone(i, k, j);
     addStone(0, 0, 3);
     addStone(1, 0, 3);
     addStone(1, 1, 3);

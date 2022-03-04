@@ -145,6 +145,17 @@ void CollisionBox::show() const
 {
     showInner(this);
     showOuter(this);
+    double del = pointer->z*cos(toRad(view->rotateY));
+    double y = view->y+0.5 - pointer->z*sin(toRad(view->rotateY));
+    double x = view->x + del*cos(toRad(view->rotateX-90));
+    double z = view->z + del*sin(toRad(view->rotateX-90));
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glColor3d(1, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex3d(view->x/F, (view->y+1)/F, view->z/F);
+    glVertex3d(x/F, y/F, z/F);
+    glVertex3d(view->x/F, (view->y+1)/F, view->z/F);
+    glEnd();
 }
 
 void renderCollisionBox() { collBox->show(); }

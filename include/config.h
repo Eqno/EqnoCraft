@@ -1,8 +1,6 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include <cmath>
-
 // common colors
 #define RED 1, 0, 0
 #define WHITE 1, 1, 1
@@ -15,9 +13,6 @@
 
 // coord factors
 const double F = 10, G = 5;
-
-// math constant
-const double pi = 4*atan(1), EPS = 1e-4;
 
 // types
 #define ull unsigned long long

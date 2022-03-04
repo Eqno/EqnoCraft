@@ -3,10 +3,10 @@
 
 #include <config.h>
 
-const int VIEWMOVETIMERID = 0;
-const int VIEWMOVETIMERTM = 10;
-const int VIEWDROPTIMERID = 1;
-const int VIEWDROPTIMERTM = 10;
+const int VIEW_MOVE_TIMER_ID = 0;
+const int VIEW_MOVE_TIMER_TM = 10;
+const int VIEW_DROP_TIMER_ID = 1;
+const int VIEW_DROP_TIMER_TM = 10;
 
 const double GRAVITYFACTOR = 1000;
 

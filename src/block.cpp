@@ -1,6 +1,7 @@
 #include <GL/freeglut_std.h>
 // It has to be defined before any other .h in GL.
 #include <GL/gl.h>
+#include <gl/gl.h>
 #include <iostream>
 #include <unordered_map>
 
@@ -54,11 +55,10 @@ void Block::show() const
 
 void renderBlock()
 {
-    int cot = 0;
     int startX = view->x-view->distance, endX = view->x+view->distance;
     int startZ = view->z-view->distance, endZ = view->z+view->distance;
     for (int i=startX; i<=endX; i++)
         for (int j=startZ; j<=endZ; j++)
             for (const auto &k: block[getHash(i, j)])
-                k.second->show(), cot ++;
+                k.second->show();
 }

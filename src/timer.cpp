@@ -86,13 +86,12 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
             }
     return true;
 }
-
 void viewMoveTimer(int id)
 {
     if (view->movingForward || view->movingBackward || view->movingLeftward || view->movingRightward)
     {
-        double delCos = View::MOVE_FACTOR * cos(view->rotateX*pi/180);
-        double delSin = View::MOVE_FACTOR * sin(view->rotateX*pi/180);
+        double delCos = View::MOVE_FACTOR * cos(toRad(view->rotateX));
+        double delSin = View::MOVE_FACTOR * sin(toRad(view->rotateX));
         double nxtX = view->x, nxtZ = view->z;
         if (view->movingForward)
         {
@@ -121,7 +120,7 @@ void viewMoveTimer(int id)
             glutPostRedisplay();
         }
     }
-    glutTimerFunc(VIEWMOVETIMERTM, viewMoveTimer, id);
+    glutTimerFunc(VIEW_MOVE_TIMER_TM, viewMoveTimer, id);
 }
 
 bool ifJump = false;
@@ -169,5 +168,5 @@ void viewDropTimer(int id)
     dropVelocity += G/GRAVITYFACTOR;
 nextLoop:
     glutPostRedisplay();
-    glutTimerFunc(VIEWDROPTIMERID, viewDropTimer, id);
+    glutTimerFunc(VIEW_DROP_TIMER_TM, viewDropTimer, id);
 }

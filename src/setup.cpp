@@ -1,3 +1,4 @@
+#include <gl/freeglut_std.h>
 #include <init.h>
 #include <timer.h>
 #include <render.h>
@@ -26,8 +27,8 @@ int main(int argc, char **argv)
     glutKeyboardFunc(keyboardDown);
     glutKeyboardUpFunc(keyboardUp);
     // loop
-    glutTimerFunc(VIEWMOVETIMERTM, viewMoveTimer, VIEWMOVETIMERID);
-    glutTimerFunc(VIEWDROPTIMERTM, viewDropTimer, VIEWDROPTIMERID);
+    glutTimerFunc(VIEW_MOVE_TIMER_TM, viewMoveTimer, VIEW_MOVE_TIMER_ID);
+    glutTimerFunc(VIEW_DROP_TIMER_TM, viewDropTimer, VIEW_DROP_TIMER_ID);
     glutMainLoop();
     return 0;
 }

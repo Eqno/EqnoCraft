@@ -1,9 +1,11 @@
 #include <cassert>
 
+#include <gl/freeglut_std.h>
 #include <init.h>
 #include <view.h>
 #include <timer.h>
 #include <window.h>
+#include <operation.h>
 #include <listener.h>
 
 bool mouseLocked = false;
@@ -28,12 +30,28 @@ void mouseClickMove(int x, int y)
 
 void mouseClick(int button, int state, int x, int y)
 {
-    if (state == GLUT_DOWN)
+    if (! mouseLocked)
     {
-        if ((button==GLUT_LEFT_BUTTON || button==GLUT_RIGHT_BUTTON)
-            && (! mouseLocked))
+        if (state == GLUT_DOWN)
         {
-            view->lastRotateX = x, view->lastRotateY = y;
+            if (button==GLUT_LEFT_BUTTON || button==GLUT_RIGHT_BUTTON)
+            {
+                view->lastRotateX = x, view->lastRotateY = y;
+            }
+        }
+    }
+    if (mouseLocked)
+    {
+        if (state == GLUT_DOWN)
+        {
+            if (button == GLUT_LEFT_BUTTON)
+            {
+                removeBlock();
+            }
+            if (button == GLUT_RIGHT_BUTTON)
+            {
+                putBlock();
+            }
         }
     }
 }
