@@ -2,9 +2,9 @@
 #define TRANSFORM_H
 
 #include <vector>
-#include "utils.h"
-#include "config.h"
-#include "coord.h"
+#include <utils.h>
+#include <config.h>
+#include <coord.h>
 
 void translateX(std::vector <Point *> &v, double l);
 void translateY(std::vector <Point *> &v, double m);

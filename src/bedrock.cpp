@@ -1,6 +1,6 @@
-#include "../include/bedrock.h"
-#include "../include/init.h"
-#include "../include/world.h"
+#include <bedrock.h>
+#include <init.h>
+#include <world.h>
 
 Bedrock::Bedrock(double x, double y, double z)
     : Block(texture->bedrock, x, y, z) {}

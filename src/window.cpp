@@ -2,7 +2,7 @@
 // It has to be defined before any other .h in GL.
 #include <GL/gl.h>
 
-#include "../include/window.h"
+#include <window.h>
 
 Window::Window(const std::string &title)
 {

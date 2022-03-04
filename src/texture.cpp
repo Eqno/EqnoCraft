@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/texture.h"
+#include <texture.h>
 
 Texture::Texture()
 {

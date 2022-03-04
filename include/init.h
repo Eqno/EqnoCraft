@@ -1,10 +1,10 @@
 #ifndef INIT_H
 #define INIT_H
 
-#include "view.h"
-#include "window.h"
-#include "texture.h"
-#include "collision.h"
+#include <view.h>
+#include <window.h>
+#include <texture.h>
+#include <collision.h>
 
 extern Window *eqnoCraft;
 extern View *view;

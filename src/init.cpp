@@ -1,8 +1,8 @@
-#include "../include/init.h"
-#include "../include/ground.h"
-#include "../include/window.h"
-#include "../include/pointer.h"
-#include "../include/bedrock.h"
+#include <init.h>
+#include <ground.h>
+#include <window.h>
+#include <pointer.h>
+#include <bedrock.h>
 
 #include <iostream>
 

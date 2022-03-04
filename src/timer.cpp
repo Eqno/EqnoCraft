@@ -1,9 +1,9 @@
-#include "../include/view.h"
-#include "../include/timer.h"
-#include "../include/block.h"
-#include "../include/init.h"
-#include "../include/utils.h"
-#include "../include/listener.h"
+#include <view.h>
+#include <timer.h>
+#include <block.h>
+#include <init.h>
+#include <utils.h>
+#include <listener.h>
 
 double dis(double x1, double z1, double x2, double z2)
 { return sqrt((x1-x2)*(x1-x2)+(z1-z2)*(z1-z2)); }

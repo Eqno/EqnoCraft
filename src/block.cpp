@@ -4,9 +4,9 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "../include/init.h"
-#include "../include/block.h"
-#include "../include/utils.h"
+#include <init.h>
+#include <block.h>
+#include <utils.h>
 
 std::unordered_map<unsigned long long, std::unordered_map<int, Coord *>> block;
 

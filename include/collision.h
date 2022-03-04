@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "coord.h"
+#include <coord.h>
 
 class BoxBorder: public Point
 {

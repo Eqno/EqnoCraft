@@ -1,6 +1,6 @@
-#include "../include/coord.h"
-#include "../include/collision.h"
-#include "../include/transform.h"
+#include <coord.h>
+#include <collision.h>
+#include <transform.h>
 
 void transform(std::vector <Point *> &v, 
 	double a, double b, double c, double d, double e, double f,

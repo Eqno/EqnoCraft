@@ -1,8 +1,8 @@
-#include "../include/init.h"
-#include "../include/coord.h"
-#include "../include/pointer.h"
-#include "../include/transform.h"
-#include "../include/collision.h"
+#include <init.h>
+#include <coord.h>
+#include <pointer.h>
+#include <transform.h>
+#include <collision.h>
 
 BoxBorder::BoxBorder(double x, double z): Point(x, 0, z) { }
 

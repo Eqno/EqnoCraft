@@ -1,4 +1,4 @@
-#include "../include/utils.h"
+#include <utils.h>
 
 ull getHash(int x, int y)
 {

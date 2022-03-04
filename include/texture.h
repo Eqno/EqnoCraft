@@ -4,8 +4,8 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 
-#include "utils.h"
-#include "config.h"
+#include <utils.h>
+#include <config.h>
 
 class Texture
 {

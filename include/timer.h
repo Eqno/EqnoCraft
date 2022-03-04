@@ -1,7 +1,7 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include "config.h"
+#include <config.h>
 
 const int VIEWMOVETIMERID = 0;
 const int VIEWMOVETIMERTM = 10;

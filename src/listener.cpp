@@ -1,8 +1,8 @@
-#include "../include/init.h"
-#include "../include/view.h"
-#include "../include/timer.h"
-#include "../include/window.h"
-#include "../include/listener.h"
+#include <init.h>
+#include <view.h>
+#include <timer.h>
+#include <window.h>
+#include <listener.h>
 
 bool mouseLocked = false;
 
@@ -26,7 +26,14 @@ void mouseClickMove(int x, int y)
 
 void mouseClick(int button, int state, int x, int y)
 {
-    if (state == GLUT_DOWN) if (! mouseLocked) view->lastRotateX = x, view->lastRotateY = y;
+    if (state == GLUT_DOWN)
+    {
+        if ((button==GLUT_LEFT_BUTTON || button==GLUT_RIGHT_BUTTON)
+            && (! mouseLocked))
+        {
+            view->lastRotateX = x, view->lastRotateY = y;
+        }
+    }
 }
 
 void keyboardDown(unsigned char cmd, int x, int y)
@@ -61,6 +68,8 @@ void keyboardDown(unsigned char cmd, int x, int y)
 
 void keyboardUp(unsigned char cmd, int x, int y)
 {
+    x ++, x --;
+    y ++, y --;
     switch (cmd) 
     {
         case 'w': view->movingForward = false; break;

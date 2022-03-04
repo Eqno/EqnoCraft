@@ -1,7 +1,7 @@
-#include "../include/init.h"
-#include "../include/timer.h"
-#include "../include/render.h"
-#include "../include/listener.h"
+#include <init.h>
+#include <timer.h>
+#include <render.h>
+#include <listener.h>
 using namespace std;
 
 int main(int argc, char **argv)

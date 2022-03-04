@@ -1,8 +1,8 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "config.h"
-#include "coord.h"
+#include <config.h>
+#include <coord.h>
 
 class View: public Coord
 {

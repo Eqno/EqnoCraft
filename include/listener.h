@@ -1,7 +1,7 @@
 #ifndef LISTENER_H
 #define LISTENER_H
 
-#include "config.h"
+#include <config.h>
 
 void mouseMove(int x, int y);
 void mouseClickMove(int x, int y);

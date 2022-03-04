@@ -6,8 +6,8 @@
 #include <GL/gl.h>
 #include <unordered_map>
 
-#include "utils.h"
-#include "coord.h"
+#include <utils.h>
+#include <coord.h>
 
 class Block: public Coord
 {

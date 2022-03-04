@@ -1,7 +1,7 @@
 #ifndef BEDROCK_H
 #define BEDROCK_H
 
-#include "block.h"
+#include <block.h>
 
 class Bedrock: public Block
 {

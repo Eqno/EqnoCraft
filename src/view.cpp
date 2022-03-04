@@ -1,6 +1,6 @@
-#include "../include/view.h"
-#include "../include/listener.h"
-#include "../include/init.h"
+#include <view.h>
+#include <listener.h>
+#include <init.h>
 
 View::View(): Coord(0, 0, 0, View::INIT_COLL_RAD)
 {

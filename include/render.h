@@ -1,7 +1,7 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-#include "config.h"
+#include <config.h>
 
 const int RENDERDISTANCE = 200;
 

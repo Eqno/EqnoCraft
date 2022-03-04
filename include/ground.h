@@ -4,7 +4,7 @@
 #include <GL/freeglut_std.h>
 #include <GL/gl.h>
 
-#include "block.h"
+#include <block.h>
 
 class Stone: public Block
 {

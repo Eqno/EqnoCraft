@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "utils.h"
-#include "config.h"
+#include <utils.h>
+#include <config.h>
 
 class Window
 {

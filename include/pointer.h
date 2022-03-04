@@ -1,7 +1,7 @@
 #ifndef POINTER_H
 #define POINTER_H
 
-#include "coord.h"
+#include <coord.h>
 
 enum PointerStyle
 { CROSS = 0 };
