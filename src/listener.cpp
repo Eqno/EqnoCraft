@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include <init.h>
 #include <view.h>
 #include <timer.h>
@@ -38,6 +40,7 @@ void mouseClick(int button, int state, int x, int y)
 
 void keyboardDown(unsigned char cmd, int x, int y)
 {
+    assert (sizeof(x)==4 && sizeof(y)==4);
     switch (cmd) 
     {
         case 'w': view->movingForward = true; break;
@@ -68,8 +71,7 @@ void keyboardDown(unsigned char cmd, int x, int y)
 
 void keyboardUp(unsigned char cmd, int x, int y)
 {
-    x ++, x --;
-    y ++, y --;
+    assert (sizeof(x)==4 && sizeof(y)==4);
     switch (cmd) 
     {
         case 'w': view->movingForward = false; break;
