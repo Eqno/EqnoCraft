@@ -9,7 +9,7 @@ double dis(double x1, double z1, double x2, double z2)
 { return sqrt((x1-x2)*(x1-x2)+(z1-z2)*(z1-z2)); }
 double norm(double x, double z) { return sqrt(x*x+z*z); }
 double projection(double x1, double z1, double x2, double z2)
-{ return (x1*z1+x2*z2) / norm(x2, z2); }
+{ return (x1*x2+z1*z2) / norm(x2, z2); }
 void unitization(double &x, double &z)
 {
     double nor = norm(x, z);
@@ -35,13 +35,13 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             if (z <= i->z-i->r-view->r)
                             {
                                 nz = i->z-i->r-view->r;
-                                nx = x + projection(dx, dz, i->r, 0) * F;
+                                nx = x + projection(dx, dz, i->r, 0);
                                 return true;
                             }
                             else if (z >= i->z+i->r+view->r)
                             {
                                 nz = i->z+i->r+view->r;
-                                nx = x - projection(dx, dz, i->r, 0) * F;
+                                nx = x + projection(dx, dz, i->r, 0);
                                 return true;
                             }
                         }
@@ -53,13 +53,13 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             if (x <= i->x-i->r-view->r)
                             {
                                 nx = i->x-i->r-view->r;
-                                nz = z + projection(dx, dz, 0, i->r) * F;
+                                nz = z + projection(dx, dz, 0, i->r);
                                 return true;
                             }
                             else if (x >= i->x+i->r+view->r)
                             {
                                 nx = i->x+i->r+view->r;
-                                nz = z - projection(dx, dz, 0, i->r) * F;
+                                nz = z + projection(dx, dz, 0, i->r);
                                 return true;
                             }
                         }
