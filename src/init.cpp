@@ -40,6 +40,18 @@ void initGround()
     addStone(0, 0, 3);
     addStone(1, 0, 3);
     addStone(1, 1, 3);
+    addStone(2, 0, 3);
+    addStone(2, 1, 3);
+    addStone(2, 2, 3);
+    addStone(3, 0, 3);
+    addStone(3, 1, 3);
+    addStone(3, 2, 3);
+    addStone(3, 0, 2);
+    addStone(3, 1, 2);
+    addStone(3, 2, 2);
+    addStone(3, 0, 1);
+    addStone(3, 1, 1);
+    addStone(3, 2, 1);
 }
 
 void initCollisionBox()

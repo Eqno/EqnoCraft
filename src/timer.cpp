@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <view.h>
 #include <timer.h>
 #include <block.h>
@@ -15,12 +16,27 @@ void unitization(double &x, double &z)
     double nor = norm(x, z);
     x /= nor, z /= nor;
 }
-
+bool judgeAgain(double x, double y, double z)
+{
+    int startX = (int) (view->x+0.5)-2, endX = (int) (view->x+0.5)+2;
+    int startZ = (int) (view->z+0.5)-2, endZ = (int) (view->z+0.5)+2;
+    for (int coordX=startX; coordX<=endX; coordX++)
+        for (int coordZ=startZ; coordZ<=endZ; coordZ++)
+            for (const auto &block: block[getHash(coordX, coordZ)])
+            {
+                const auto &i = block.second;
+                if (y < i->y+2*i->r && y > i->y-4*i->r)
+                    if (x > i->x-i->r-view->r && x < i->x+i->r+view->r)
+                        if (z > i->z-i->r-view->r && z < i->z+i->r+view->r)
+                            return false;
+            }
+    return true;
+}
 bool judgeMove(double x, double y, double z, double &nx, double &nz)
 {
     double dx = nx - x, dz = nz - z;
-    int startX = (int) (view->x)-2, endX = (int) (view->x)+2;
-    int startZ = (int) (view->z)-2, endZ = (int) (view->z)+2;
+    int startX = (int) (view->x+0.5)-2, endX = (int) (view->x+0.5)+2;
+    int startZ = (int) (view->z+0.5)-2, endZ = (int) (view->z+0.5)+2;
     for (int coordX=startX; coordX<=endX; coordX++)
         for (int coordZ=startZ; coordZ<=endZ; coordZ++)
             for (const auto &block: block[getHash(coordX, coordZ)])
@@ -36,13 +52,13 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             {
                                 nz = i->z-i->r-view->r;
                                 nx = x + projection(dx, dz, i->r, 0);
-                                return true;
+                                if (judgeAgain(nx, y, nz)) return true;
                             }
                             else if (z >= i->z+i->r+view->r)
                             {
                                 nz = i->z+i->r+view->r;
                                 nx = x + projection(dx, dz, i->r, 0);
-                                return true;
+                                if (judgeAgain(nx, y, nz)) return true;
                             }
                         }
                     }
@@ -54,13 +70,15 @@ bool judgeMove(double x, double y, double z, double &nx, double &nz)
                             {
                                 nx = i->x-i->r-view->r;
                                 nz = z + projection(dx, dz, 0, i->r);
-                                return true;
+                                if (judgeAgain(nx, y, nz)) return true;
+                                else return false;
                             }
                             else if (x >= i->x+i->r+view->r)
                             {
                                 nx = i->x+i->r+view->r;
                                 nz = z + projection(dx, dz, 0, i->r);
-                                return true;
+                                if (judgeAgain(nx, y, nz)) return true;
+                                else return false;
                             }
                         }
                     }
@@ -127,8 +145,8 @@ do { \
 } while (0)
 void viewDropTimer(int id)
 {
-    int startX = (int) (view->x)-2, endX = (int) (view->x)+2;
-    int startZ = (int) (view->z)-2, endZ = (int) (view->z)+2;
+    int startX = (int) (view->x+0.5)-2, endX = (int) (view->x+0.5)+2;
+    int startZ = (int) (view->z+0.5)-2, endZ = (int) (view->z+0.5)+2;
     if (ifJump)
     {
         view->y -= dropVelocity;
